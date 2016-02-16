@@ -2,6 +2,7 @@
 layout: post
 title:  "Morbi a Semper"
 date:   2014-08-31 14:36:23
+permalink: /morbi_a_semper.html
 ---
 
 <span class="image featured"><img src="/images/03.png" alt=""></span>
