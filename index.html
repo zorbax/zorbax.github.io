@@ -1,170 +1,24 @@
 ---
-layout: landing-page
+layout: default
 ---
-		<!-- Main -->
-			<article id="main">
 
-				<header class="special container">
-					<span class="icon  fa-chevron-right"></span>
-					<h2><strong>bioinformatics</strong><br />(bi-oh-in-foh-shit-I-don’t-understand-how-that-works).</h2>
-					<p>From the word <strong>bio</strong>, meaning "of or related to biology" and <strong>informatics</strong>, meaning<br />
-						"absolutely anything your collaborators or boss don't understand about maths, <br />
-						statistics or computing, including why they can’t print and how the internet works”
-						</p>
-				</header>
+<div class="main-post-list">
 
-				<!-- One -->
-                <!--
-					<section class="wrapper style2 container special-alt">
-						<div class="row half">
-							<div class="8u">
+  <ol class="post-list">
+    {% for post in paginator.posts %}
+      <li>
+        <h2 class="post-list__post-title post-title"><a href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+        <p class="excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}&hellip;</p>
+        <div class="post-list__meta"><time datetime="{{ post.date | date: "%-d %b %Y" }}" class="post-list__meta--date date">{{ post.date | date: "%-d %b %Y" }}</time> &#8226; <span class="post-meta__tags">on {% for tag in post.tags %}<a href="{{ site.baseurl }}tags/#{{ tag }}">{{ tag }}</a> {% endfor %}</span></div>
+        <hr class="post-list__divider">
+      </li>
+    {% endfor %}
+  </ol>
 
-								<header>
-									<h2>Behold the <strong>icons</strong> that visualize what you’re all about. or just take up space. your call bro.</h2>
-								</header>
-								<p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu comteger ut fermentum lorem. Lorem ipsum dolor sit amet. Sed tristique purus vitae volutpat ultrices. eu elit eget commodo. Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo.</p>
-								<footer>
-									<ul class="buttons">
-										<li><a href="#" class="button">Find Out More</a></li>
-									</ul>
-								</footer>
+  <hr class="post-list__divider ">
 
-							</div>
-							<div class="4u skel-cell-important">
+  {% if paginator.previous_page or paginator.next_page %}
+      {% include pagination.html %}
+  {% endif %}
 
-								<ul class="featured-icons">
-									<li><span class="icon fa-clock-o"><span class="label">Feature 1</span></span></li>
-									<li><span class="icon fa-volume-up"><span class="label">Feature 2</span></span></li>
-									<li><span class="icon fa-laptop"><span class="label">Feature 3</span></span></li>
-									<li><span class="icon fa-inbox"><span class="label">Feature 4</span></span></li>
-									<li><span class="icon fa-lock"><span class="label">Feature 5</span></span></li>
-									<li><span class="icon fa-cog"><span class="label">Feature 6</span></span></li>
-								</ul>
-
-							</div>
-						</div>
-					</section>
-					     -->
-				<!-- Two -->
-                <!--
-					<section class="wrapper style1 container special">
-						<div class="row">
-							<div class="4u">
-
-								<section>
-									<span class="icon featured fa-check"></span>
-									<header>
-										<h3>This is Something</h3>
-									</header>
-									<p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
-								</section>
-
-							</div>
-							<div class="4u">
-
-								<section>
-									<span class="icon featured fa-check"></span>
-									<header>
-										<h3>Also Something</h3>
-									</header>
-									<p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
-								</section>
-
-							</div>
-							<div class="4u">
-
-								<section>
-									<span class="icon featured fa-check"></span>
-									<header>
-										<h3>Probably Something</h3>
-									</header>
-									<p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
-								</section>
-
-							</div>
-						</div>
-					</section>
-                           -->
-
-				<!-- Three -->
-								<!---
-					<section class="wrapper style3 container special">
-
-						<header class="major">
-							<h2><strong>cool stuff</strong></h2>
-						</header>
-
-						<div class="row">
-							<div class="6u">
-
-								<section>
-									<a href="#" class="image featured"><img src="images/01.png" alt="" /></a>
-									<header>
-										<h3>один</h3>
-									</header>
-									<p>Las noches son un mar de oleaje torvo que a veces me trae recuerdos, y qué recuerdos los que vuelan esta noche de donde hace tantos años se habían quedado durmiendo.</p>
-								</section>
-
-							</div>
-							<div class="6u">
-
-								<section>
-									<a href="#" class="image featured"><img src="images/02.png" alt="" /></a>
-									<header>
-										<h3>два</h3>
-									</header>
-									<p>Cómo me gustaba Julieta, en ese entonces todo venía en otros nombres, desde el amarla en secreto hasta el vivir con la confianza en que me amaba </p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="6u">
-
-								<section>
-									<a href="#" class="image featured"><img src="images/03.png" alt="" /></a>
-									<header>
-										<h3>три</h3>
-									</header>
-									<p>Me gustaba Julieta cuando iba mirando a cualquier sitio sin hacerlo, cuando imaginaba y se peinaba los cabellos negros, negros como noches y largos, largos como inviernos...</p>
-								</section>
-
-							</div>
-							<div class="6u">
-
-								<section>
-									<a href="#" class="image featured"><img src="images/04.png" alt="" /></a>
-									<header>
-										<h3>четыре</h3>
-									</header>
-									<p>Me gustaba Julieta, cuando imaginaba que le amaba de hace tiempo, cuando me escribió que era su amor, cuando lo entiendo y además cuando como hoy lo rememoro...</p>
-								</section>
-
-							</div>
-						</div>
-					-->
-						<!--
-
-						<footer class="major">
-							<ul class="buttons">
-								<li><a href="#" class="button">See More</a></li>
-							</ul>
-						</footer>
-					-->
-					</section>
-
-			</article>
-
-		<!-- CTA -->
-			<!-- <section id="cta">
-
-				<header>
-					<h2><strong>Something</strong></h2>
-					<p>Esto es sólo un simulacro, favor de mantener la calma.</p>
-				</header>
-				<footer>
-					<ul class="buttons">
-						<li><a href="#" class="button special">Take My Money</a></li>
-						<li><a href="#" class="button">LOL</a></li>
-					</ul>
-				</footer>
-
-			</section> -->
+</div>
