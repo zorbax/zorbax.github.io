@@ -14,8 +14,10 @@ Buscando entre mis archivos más antiguos encontré mi *primer script*. Igual y 
 list=`ls | grep "7z"`
 
 for i in $list
-do 7z x $i
+do
+  7z x $i
 done
+
 exit 0
 ```
-No era para tanto, bien pude haber ejecutado: ``for i in *7z; do 7z x $i; done``
+No era para tanto, bien pude haber ejecutado: ``for i in *7z; do 7z x $i; done``. 
