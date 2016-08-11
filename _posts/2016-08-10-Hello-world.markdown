@@ -1,6 +1,6 @@
 ---
 title: Hello world!
-date: 2016-10-08T23:31:23.000Z
+date: 2016-08-10T23:31:23.000Z
 categories: [blog]
 tags: [bash]
 ---
