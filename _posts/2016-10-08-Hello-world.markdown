@@ -18,4 +18,4 @@ do 7z x $i
 done
 exit 0
 ```
-No era para tanto, bien pude haber ejecutado: ``for i in *7z; do 7x x $i; done``
+No era para tanto, bien pude haber ejecutado: ``for i in *7z; do 7z x $i; done``
