@@ -10,7 +10,6 @@ He sido usuario GNU/Linux desde 2007. Inicialmente empecé con Mandriva, posteri
 Buscando entre mis archivos más antiguos encontré mi primer script. Igual y fui yo, igual y fue Stackoverflow pero estas lineas fueron las primeras que ejecuté sabiendo qué hacía cda una de ellas.
 
 ```bash
-
 #!/bin/bash
 list=`ls | grep "7z"`
 
@@ -18,6 +17,5 @@ for i in $list
 do 7z x $i
 done
 exit 0
-
 ```
 No era para tanto, bien pude haber ejecutado: ``for i in *7z; do 7x x $i; done``
