@@ -4,7 +4,7 @@ title_nick: '@zorbax'
 description: 'Bioinformático'
 url: 'http://zorbax.github.io'
 baseurl: '/'
-# google_analytics: 'UA-XXXXXX-X'
+google_analytics: 'UA-82378315-1'
 # disqus_shortname: 'your-disqus-name'
 
 author:
@@ -13,9 +13,9 @@ author:
   twitter_username: zorbax
   facebook_username: zorbax
   github_username:  zorbax
-  linkedin_username:  zorbax
-  flickr_username:  zorbax
-  lastfm_username:  c4ax
+#  linkedin_username:  zorbax
+#  flickr_username:  zorbax
+#  lastfm_username:  c4ax
 
 defaults:
   -
@@ -23,7 +23,7 @@ defaults:
       path: ''
       type: 'posts'
     values:
-        layout: 'post'
+      layout: 'post'
 
 # Build settings
 destination: _site
