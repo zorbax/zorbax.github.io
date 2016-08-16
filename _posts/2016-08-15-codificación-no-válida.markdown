@@ -5,7 +5,7 @@ categories: [blog]
 tags: [bash, debian]
 ---
 
-Un detalle bastante molesto y bastante común para mí es el error "Codificación no válida" generalmente al descomprimir archivos rar/zip, principalment cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: ``BÃ¤nd - Some T�tle.file``
+Un detalle bastante molesto y bastante común para mí es el error "Codificación no válida" generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: ``BÃ¤nd - Some T�tle.file``
 
 Los archivos que tengo fueron comprimidos(?) en Güindous, utilizando la codificación latina ISO-8859-1 o la codificación ISO-8859-5, utilizada para alfabetos cirílicos que es de donde obtengo... bueno, no tengo por qué dar explicaciones.
 
