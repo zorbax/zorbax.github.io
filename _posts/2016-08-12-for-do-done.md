@@ -82,7 +82,7 @@ Originalmente definía una variable que me permitiera obtener el nombre, emplean
 name=`echo $i | cut -d\. -f1 | sed 's/blablabla//g'`
 ```
 
-Posteriormente descubrí que era más práctico usar ``basename`` para obtener sufijos de los nombres de archivos. Más adelante les compartiré algunos ejemplos prácticos.
+Posteriormente descubrí que era más práctico usar ``basename`` para obtener sufijos de los nombres de archivos. Más adelante les compartiré algunos ejemplos del MundoReal™.
 
 ```bash
 for i in list
