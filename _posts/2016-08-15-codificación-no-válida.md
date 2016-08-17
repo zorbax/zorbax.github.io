@@ -11,11 +11,11 @@ Los archivos que tengo fueron comprimidos(?) en Güindous, utilizando la codific
 
 Se instala ``convmv`` para convertir la codificación correspondiente:
 
-``bash
- apt-get install convmv
-``
+̣```bash
+apt-get install convmv
+```
 Luego
 
-``bash
-  find . -name '?' | xargs convmv -r --notest -f ISO-8859-1 -t UTF-8
-``
+```bash
+find . -name '?' | xargs convmv -r --notest -f ISO-8859-1 -t UTF-8
+```
