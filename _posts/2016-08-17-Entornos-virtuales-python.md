@@ -59,7 +59,7 @@ my_project/ -> /home/zorbax/bin/python/my_project/
 
 En el directorio ``bin/`` se encuentran los ejecutables necesarios para interactuar con el *virtualenv*. En ``include/`` se encuentran algunos archivos de cabecera de C (*.h) necesarios para compilar algunas librerías de Python. Y en ``lib/`` se encuentra una copia de Python así como un directorio llamado ``site-packages/`` en el cual se aloja el código fuente de los paquetes Python instalados en el virtualenv. Para activar el entorno virtual, se procesa el archivo ``bin/activate`` que se encuentra en la carpeta *my_project*:
 
-``bash
+```bash
 ██ zorbax@beatrix
 ██ ~
 ██ ┗(-_- )┓ $ source my_project/bin/activate
@@ -68,7 +68,7 @@ En el directorio ``bin/`` se encuentran los ejecutables necesarios para interact
 (my_project) ██ zorbax@beatrix
 ██ ~
 ██ ┗(-_- )┓ $
-``
+```
 
 El prompt de la terminal indica que el virtualenv en my_project ya está activado y se procede a instalar las librerías necesarias en las versiones deseadas. Para ello se utiliza ``pip``:
 
