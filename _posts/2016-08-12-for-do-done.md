@@ -74,7 +74,7 @@ do
 done
 ```
 
-Este tipo de loops es extremadamente útil, pero la característica pricipal que noto es que el output del comando ejecutado en cada loop es diferente al input y se genera automáticamente por el comando utilizado. Es decir, tengo un archivo ``reads.fasta`` el programa automáticamente generará ``reads.something.fasta``. Si tengo que definir el nombre del output y lo defino como ``command -i $i -o $i.something.fasta`` y mi ``$i`` es ``reads.fasta``, obtendré algo como ``reads.fasta.something.fasta``, que tendrá el resultado esperado del comando pero tendrá un nombre redundante.
+Este tipo de loops es extremadamente útil, pero la característica principal que noto es que el *output* del comando ejecutado en cada *loop* es diferente al *input* y se genera automáticamente por el comando utilizado. Es decir, tengo un archivo ``reads.fasta`` el programa automáticamente generará ``reads.something.fasta``. Si tengo que definir el nombre del output y lo defino como ``command -i $i -o $i.something.fasta`` y mi ``$i`` es ``reads.fasta``, obtendré algo como ``reads.fasta.something.fasta``, que tendrá el resultado esperado del comando pero tendrá un nombre redundante.
 
 Originalmente definía una variable que me permitiera obtener el nombre, empleando sustituciones en caso de que el nombre fuera muy largo:
 
