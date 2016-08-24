@@ -1,10 +1,15 @@
 ---
 layout: page
-title: Services
+title: Servicios
 permalink: /services
 ---
-Data Analysis
 
 
 
-[link-web]:	http://www.google.com
+* Personalización de scripts
+* Anotación genomica
+* Ensamble genómico *de novo*
+* Análisis de genómica comparativa
+* Análisis metagenómico
+* Análisis de amplicones de 16S/18S
+* Análisis de miRNAs
