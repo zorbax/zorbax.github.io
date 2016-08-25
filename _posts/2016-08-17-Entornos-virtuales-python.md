@@ -1,5 +1,5 @@
 ---
-title: Entornos virtuales en *Python*
+title: Entornos virtuales en Python
 date: 2016-08-17T12:02:47.000Z
 categories: [blog]
 tags: [python, debian]
