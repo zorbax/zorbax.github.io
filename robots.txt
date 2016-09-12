@@ -1,0 +1,4 @@
+User-agent: *
+Sitemap: http://zorbax.github.io/sitemap.xml
+Disallow: /ghost/
+
