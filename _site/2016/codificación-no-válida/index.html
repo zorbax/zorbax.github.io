@@ -43,7 +43,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000//2016/codificaci%C3%B3n-no-v%C3%A1lida/">
+  <link rel="canonical" href="http://zorbax.github.io//2016/codificaci%C3%B3n-no-v%C3%A1lida/">
   <link rel="alternate" type="application/rss+xml" title="Otoniel Maya" href="/feed.xml">
 </head>
 
@@ -147,13 +147,13 @@
 
 <p>Primeramente se instala <code class="highlighter-rouge">convmv</code> para convertir el archivo a la codificación correspondiente:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>apt-get install convmv
+<div class="highlighter-rouge"><pre class="highlight"><code>apt-get install convmv
 </code></pre>
 </div>
 
 <p>Luego, buscamos los archivos que contengan alǵún caracter desconocido <code class="highlighter-rouge">?</code>, usando <code class="highlighter-rouge">xargs</code> ejecutamos <code class="highlighter-rouge">convmv</code> a la búsqueda.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find . -name <span class="s1">'?'</span> | xargs convmv -r --notest -f ISO-8859-1 -t UTF-8
+<div class="highlighter-rouge"><pre class="highlight"><code>find . -name <span class="s1">'?'</span> | xargs convmv -r --notest -f ISO-8859-1 -t UTF-8
 </code></pre>
 </div>
 
@@ -167,7 +167,7 @@
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'zorbax-blog'; // required: replace example with your forum shortname
         var disqus_config = function () {
-          this.page.url = 'http://localhost:4000/2016/codificaci%C3%B3n-no-v%C3%A1lida/';
+          this.page.url = 'http://zorbax.github.io/2016/codificaci%C3%B3n-no-v%C3%A1lida/';
           this.page.identifier = '/2016/codificación-no-válida';
           this.page.title = 'Codificación no valida';
         };
