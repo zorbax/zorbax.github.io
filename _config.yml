@@ -1,21 +1,18 @@
 # Site settings
-title: 'Otoniel Maya'
+title: Otoniel Maya
 title_nick: '@zorbax'
 description: 'Bioinformático'
 url: 'http://zorbax.github.io'
-baseurl: '/'
-google_analytics: 'UA-82378315-1'
-disqus_shortname: 'zorbax-blog'
+baseurl: ''
+# google_analytics: 'UA-XXXXXX-X'
+# disqus_shortname: 'your-disqus-name'
 
 author:
-  name: '@zorbax'
-  email: zorbax@bk.com
+  name: 'O. Maya'
+  email: otto94@gmail.com
   twitter_username: zorbax
-#  facebook_username: zorbax
   github_username:  zorbax
-#  linkedin_username:  zorbax
-#  flickr_username:  zorbax
-#  lastfm_username:  c4ax
+
 
 defaults:
   -
@@ -23,7 +20,7 @@ defaults:
       path: ''
       type: 'posts'
     values:
-      layout: 'post'
+        layout: 'post'
 
 # Build settings
 destination: _site
@@ -32,13 +29,15 @@ permalink: /:year/:title/
 markdown: kramdown
 highlighter: rouge
 
+sass:
+    sass_dir: _sass
+    style: compressed
+
 kramdown:
   # use Github Flavored Markdown
   input: GFM
   # do not replace newlines by <br>s
   hard_wrap: false
 
-gems: ['jekyll-paginate']
-
-exclude: ['README.md', 'Gemfile', 'Gemfile.lock']
-noindex: false
+plugins: ['jekyll-paginate']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
