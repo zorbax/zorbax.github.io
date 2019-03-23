@@ -1,6 +1,6 @@
 ---
 title: Instalar Miniconda2 en Debian Stretch
-date: 2017-12-285T22:34:02.000Z
+date: 2017-12-28T22:34:02.000Z
 categories: [blog]
 tags: [python, conda, debian]
 ---
