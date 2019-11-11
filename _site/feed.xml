@@ -3,11 +3,122 @@
   <channel>
     <title>Otoniel Maya</title>
     <description>Bioinformático</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 30 Sep 2017 21:26:12 -0500</pubDate>
-    <lastBuildDate>Sat, 30 Sep 2017 21:26:12 -0500</lastBuildDate>
-    <generator>Jekyll v3.5.2</generator>
+    <link>http://zorbax.github.io/</link>
+    <atom:link href="http://zorbax.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 07 Nov 2019 11:34:42 +0100</pubDate>
+    <lastBuildDate>Thu, 07 Nov 2019 11:34:42 +0100</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Instalar Miniconda2 en Debian Stretch</title>
+        <description>&lt;p&gt;wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+mkdir -p $HOME/bin/miniconda2
+bash Miniconda2-latest-Linux-x86_64.sh -b -p $HOME/bin/miniconda2&lt;/p&gt;
+
+&lt;p&gt;cat «EOF » $HOME/.bashrc&lt;/p&gt;
+
+&lt;p&gt;export PATH=$HOME/bin/miniconda2/bin:$PATH&lt;/p&gt;
+
+&lt;p&gt;EOF&lt;/p&gt;
+
+&lt;p&gt;source $HOME/.bashrc&lt;/p&gt;
+
+&lt;p&gt;$ conda info
+finds the executable where you have just installed it. If you did add Anaconda or Miniconda to your PATH (the default option) you will have to supply its path explicitly.&lt;/p&gt;
+
+&lt;p&gt;It’s a useful habit to do:&lt;/p&gt;
+
+&lt;p&gt;$ conda update conda
+with a fresh install. You can run the update command for any installed package, including conda itself. This intrinsic bootstrapping capacity makes conda very powerful. In fact, if you started with the Miniconda installation, you can expand it to the full Anaconda distribution with:&lt;/p&gt;
+
+&lt;p&gt;$ conda install anaconda
+but that’s not the focus here.&lt;/p&gt;
+
+&lt;p&gt;What you do need to install is conda-build:&lt;/p&gt;
+
+&lt;p&gt;$ conda install conda-build
+On Linux, you may also need to install patchelf.&lt;/p&gt;
+
+&lt;p&gt;$ conda install patchelf&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Dec 2017 23:34:02 +0100</pubDate>
+        <link>http://zorbax.github.io/2017/Instalar-Miniconda-en-Debian-Stretch/</link>
+        <guid isPermaLink="true">http://zorbax.github.io/2017/Instalar-Miniconda-en-Debian-Stretch/</guid>
+        
+        <category>python</category>
+        
+        <category>conda</category>
+        
+        <category>debian</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Cambiar la ubicación del Docker Root Dir</title>
+        <description>&lt;p&gt;El siguiente post es una guía para cambiar la ubicación de la carpeta que Docker tiene por default para almacenar
+sus contenedores: &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/docker&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;La razón principal porque es práctico hacerlo es la falta de espacio en &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev&lt;/code&gt;. Estas instrucciones fueron probadas en Debian 9, supongo que funcionará
+en cualquier otro sistema que utilice systemd. No tiene mayor complicación, sigue las instrucciones:&lt;/p&gt;
+
+&lt;p&gt;Lo primero que tenemos que hacer es modificar el script de inicio de Docker en el systemd. Como root abre el archivo con tu editor favorito.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/lib/systemd/system/docker.service&lt;/code&gt; y reemplaza &lt;code class=&quot;highlighter-rouge&quot;&gt;/path/to/docker&lt;/code&gt; con la nueva ubicación que deseas, &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/zorbax/bin/docker&lt;/code&gt;, en mi caso:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM:
+ExecStart=/usr/bin/dockerd -H fd://
+TO:
+ExecStart=/usr/bin/dockerd -g /path/to/docker -H fd://
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Una vez editado el archivo hay que detener el servicio de docker:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl stop docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Es importante asegurarse que el demonio de Docker no se está ejecutando. En el siguiente comando no debe de aparecer el proceso:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# ps aux | grep -i docker | grep -v grep
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Reiniciamos el demonio &lt;code class=&quot;highlighter-rouge&quot;&gt;systemd&lt;/code&gt; una vez que nos aseguramos que no se estaba ejecutando docker:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl daemon-reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ahora hay que crear el directorio que especificaste en el primer paso y opcionalmente
+sincronizar los datos que tengas actualmente a la neuva ubicación:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir -p /home/zorbax/bin/docker
+# rsync -aqxP /var/lib/docker/ /home/zorbax/bin/docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Iniciamos el demonio de docker:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl start docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Verificamos que docker se está ejecutando en el nuevo directori:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#  ps aux | grep -i docker | grep -v grep
+root     27004  0.0  0.2 540456 45396 ?        Ssl  01:06   0:06 /usr/bin/dockerd -g /home/zorbax/bin/docker -H fd://
+root     27014  0.0  0.0 383052 10416 ?        Ssl  01:06   0:01 docker-containerd -l unix:///var/run/docker/libcontainerd/docker-containerd.sock --metrics-interval=0 --start-timeout 2m --state-dir /var/run/docker/libcontainerd/containerd --shim docker-containerd-shim --runtime docker-runc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;¡Listo!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Dec 2017 17:02:01 +0100</pubDate>
+        <link>http://zorbax.github.io/2017/Cambiar-la-ubicacio-n-del-Docker-Root-Dir/</link>
+        <guid isPermaLink="true">http://zorbax.github.io/2017/Cambiar-la-ubicacio-n-del-Docker-Root-Dir/</guid>
+        
+        <category>docker</category>
+        
+        <category>debian</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Entornos virtuales en Python</title>
@@ -15,38 +126,34 @@
 
 &lt;p&gt;Para poder crear dichos entornos es necesario instalar la utilidad &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt;. Para Python 2.7 :&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Debian, Ubuntu&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Debian, Ubuntu&lt;/span&gt;
 
-apt-get install virtualenv python-virtualenv
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;virtualenv python-virtualenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;También es posible instalar virtualenv utilizando pip, el cual es un gestor de paquetes de Python:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#En caso de no tener previamente instalado pip&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#En caso de no tener previamente instalado pip&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# apt-get install python-pip&lt;/span&gt;
 
-pip install virtualenv
+pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;virtualenv
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Normalmente todos los entornos virtuales los tengo en un sólo lugar: &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/bin/python/&lt;/code&gt;. Para crear un &lt;em&gt;virtualenv&lt;/em&gt; simplemente se ejecuta:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;virtualenv &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;virtualenv &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Creo un link simbólico en la carpeta del programa que requiera la versión particular de la librería:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;my_program
-ln -s &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project .
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;my_program
+&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;El directorio my_project/ tiene la siguiente estructura:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;my_project/ -&amp;gt; /home/zorbax/bin/python/my_project/
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;my_project/ -&amp;gt; /home/zorbax/bin/python/my_project/
 ├── bin
 ├── include
 │   └── python2.7 -&amp;gt; /usr/include/python2.7
@@ -60,43 +167,39 @@ ln -s &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project 
     ├── bin -&amp;gt; /home/zorbax/bin/python/my_project/bin
     ├── include -&amp;gt; /home/zorbax/bin/python/my_project/include
     └── lib -&amp;gt; /home/zorbax/bin/python/my_project/lib
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;En el directorio &lt;code class=&quot;highlighter-rouge&quot;&gt;bin/&lt;/code&gt; se encuentran los ejecutables necesarios para interactuar con el &lt;em&gt;virtualenv&lt;/em&gt;. En &lt;code class=&quot;highlighter-rouge&quot;&gt;include/&lt;/code&gt; se encuentran algunos archivos de cabecera de C (*.h) necesarios para compilar algunas librerías de Python. Y en &lt;code class=&quot;highlighter-rouge&quot;&gt;lib/&lt;/code&gt; se encuentra una copia de Python así como un directorio llamado &lt;code class=&quot;highlighter-rouge&quot;&gt;site-packages/&lt;/code&gt; en el cual se aloja el código fuente de los paquetes Python instalados en el virtualenv. Para activar el entorno virtual, se procesa el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;bin/activate&lt;/code&gt; que se encuentra en la carpeta &lt;em&gt;my_project&lt;/em&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;██ zorbax@beatrix
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;██ zorbax@beatrix
 ██ ~
-██ ┗&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;-_- &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;┓ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;my_project/bin/activate
+██ ┗&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-_-&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;┓ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;my_project/bin/activate
 
 
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;my_project&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ██ zorbax@beatrix
 ██ ~
-██ ┗&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;-_- &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;┓ &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+██ ┗&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-_-&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;┓ &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;El prompt de la terminal indica que el virtualenv en my_project ya está activado y se procede a instalar las librerías necesarias en las versiones deseadas. Para ello se utiliza &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;(my_project)$ &lt;/span&gt;pip install my_library_version1.1.3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;my_project&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;my_library_version1.1.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Al terminar la instalación estaremos utilizando la versión específica requerida para el programa.&lt;/p&gt;
 
 &lt;p&gt;El prompt de la terminal indica que el &lt;em&gt;virtualenv&lt;/em&gt; está activado. Esto nos permitirá utilizar los paquetes instalados e instalar paquetes adicionales. Para desactivar un &lt;em&gt;virtualenv&lt;/em&gt; porque se necesita trabajar en otro diferente se ejecuta el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;deactivate&lt;/code&gt;. No es necesario ir a la carpeta del virtualenv para realizar la operación:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;my_project&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ██ zorbax@beatrix
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;my_project&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ██ zorbax@beatrix
 ██ ~
-██ ┗&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;-_- &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;┓ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;deactivate
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+██ ┗&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-_-&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;┓ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;deactivate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;El prompt de la terminal indica que el virtualenv ha sido desactivado. Si se utiliza demasiados entornos virtuales podría ser un poco confuso, pero para ese inconveniente podremos utilizar una extensión de &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt; llamada &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenvwrapper&lt;/code&gt;, pero esa es otra historia.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 17 Aug 2016 07:02:47 -0500</pubDate>
-        <link>http://localhost:4000/2016/Entornos-virtuales-python/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/Entornos-virtuales-python/</guid>
+        <pubDate>Wed, 17 Aug 2016 14:02:47 +0200</pubDate>
+        <link>http://zorbax.github.io/2016/Entornos-virtuales-python/</link>
+        <guid isPermaLink="true">http://zorbax.github.io/2016/Entornos-virtuales-python/</guid>
         
         <category>python</category>
         
@@ -115,19 +218,17 @@ ln -s &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project 
 
 &lt;p&gt;Primeramente se instala &lt;code class=&quot;highlighter-rouge&quot;&gt;convmv&lt;/code&gt; para convertir el archivo a la codificación correspondiente:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install convmv
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;convmv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Luego, buscamos los archivos que contengan alǵún caracter desconocido &lt;code class=&quot;highlighter-rouge&quot;&gt;?&lt;/code&gt;, usando &lt;code class=&quot;highlighter-rouge&quot;&gt;xargs&lt;/code&gt; ejecutamos &lt;code class=&quot;highlighter-rouge&quot;&gt;convmv&lt;/code&gt; a la búsqueda.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find . -name &lt;span class=&quot;s1&quot;&gt;'?'&lt;/span&gt; | xargs convmv -r --notest -f ISO-8859-1 -t UTF-8
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'?'&lt;/span&gt; | xargs convmv &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--notest&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; ISO-8859-1 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; UTF-8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
-        <pubDate>Mon, 15 Aug 2016 05:54:18 -0500</pubDate>
-        <link>http://localhost:4000/2016/codificaci%C3%B3n-no-v%C3%A1lida/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/codificaci%C3%B3n-no-v%C3%A1lida/</guid>
+        <pubDate>Mon, 15 Aug 2016 12:54:18 +0200</pubDate>
+        <link>http://zorbax.github.io/2016/codificacio-n-no-va-lida/</link>
+        <guid isPermaLink="true">http://zorbax.github.io/2016/codificacio-n-no-va-lida/</guid>
         
         <category>bash</category>
         
@@ -142,8 +243,8 @@ ln -s &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project 
         <title>for-do-done</title>
         <description>&lt;p&gt;Buscando entre mis archivos más antiguos encontré mi &lt;em&gt;primer script&lt;/em&gt;. No hackeé nada, no me conecté a la &lt;em&gt;deep web&lt;/em&gt;, no hice nada espectacular, simplemente hice un loop para descomprimir archivos. Igual y fui yo, igual y fue Stackoverflow pero estas lineas fueron las primeras que ejecuté sabiendo qué hacía cada una de ellas.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;ls | grep &lt;span class=&quot;s2&quot;&gt;&quot;7z&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;7z&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$list&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;do
@@ -151,11 +252,10 @@ ln -s &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project 
 &lt;span class=&quot;k&quot;&gt;done
 
 &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;No era para tanto, bien pude haber ejecutado el loop para una lista utilizando el metacaracter &lt;em&gt;glob&lt;/em&gt; (*): &lt;code class=&quot;highlighter-rouge&quot;&gt;for i in *7z; do 7z x $i; done&lt;/code&gt; en una sola linea. Lo interesante es que fue la primera vez que definí una variable como lista con la salida de dos comandos(&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;) y por cada elemento (&lt;code class=&quot;highlighter-rouge&quot;&gt;$i&lt;/code&gt;) listado en esa variable-lista ejecuté &lt;code class=&quot;highlighter-rouge&quot;&gt;7z&lt;/code&gt; para descomprimir dicho elemento. Con el tiempo aprendí que existen muchas maneras diferentes, pero la manera más simple es mejor, apelando un poco al principio de la Navaja de Ockham.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;#Si sólo con 4 archivos, pero son muy grandes y descomprimirlos&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#uno por uno tomaría mucho tiempo.&lt;/span&gt;
@@ -164,9 +264,8 @@ ln -s &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project 
 &lt;span class=&quot;k&quot;&gt;do
   &lt;/span&gt;7z x &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;#Si tienes archivos seriados, como en el caso de un output&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#de Illumina en el que se usaron identificadores consecutivos.&lt;/span&gt;
@@ -174,9 +273,8 @@ ln -s &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project 
 &lt;span class=&quot;k&quot;&gt;do
   &lt;/span&gt;7z x &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*7z&quot;&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;#Para todos aquellos archivos que tengan&lt;/span&gt;
@@ -185,51 +283,46 @@ ln -s &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/bin/python/my_project 
 &lt;span class=&quot;k&quot;&gt;do
   &lt;/span&gt;7z x &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-ls &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.7z &amp;gt; list.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.7z &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; list.txt
 
 &lt;span class=&quot;c&quot;&gt;#Listar archivos, eviar a un archivo, abrie el archivo&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#cada momento que se ejecuta el loop... No es lo más eficiente&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#pero es una forma de hacerlo.&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;cat list.txt&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;list.txt&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;do
   &lt;/span&gt;7z x &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#En este caso el archivo no se abre con cat sino que&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#&quot;pasa&quot; directamente como input al shell.&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&amp;lt;list.txt&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;;
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&amp;lt;list.txt&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;do
   &lt;/span&gt;7z x &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Este tipo de loops es extremadamente útil, pero la característica principal que noto es que el &lt;em&gt;output&lt;/em&gt; del comando ejecutado en cada &lt;em&gt;loop&lt;/em&gt; es diferente al &lt;em&gt;input&lt;/em&gt; y se genera automáticamente por el comando utilizado. Es decir, tengo un archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;reads.fasta&lt;/code&gt; el programa automáticamente generará &lt;code class=&quot;highlighter-rouge&quot;&gt;reads.something.fasta&lt;/code&gt;. Si tengo que definir el nombre del output y lo defino como &lt;code class=&quot;highlighter-rouge&quot;&gt;command -i $i -o $i.something.fasta&lt;/code&gt; y mi &lt;code class=&quot;highlighter-rouge&quot;&gt;$i&lt;/code&gt; es &lt;code class=&quot;highlighter-rouge&quot;&gt;reads.fasta&lt;/code&gt;, obtendré algo como &lt;code class=&quot;highlighter-rouge&quot;&gt;reads.fasta.something.fasta&lt;/code&gt;, que tendrá el resultado esperado del comando pero tendrá un nombre redundante.&lt;/p&gt;
 
 &lt;p&gt;Originalmente definía una variable que me permitiera obtener el nombre, empleando sustituciones en caso de que el nombre fuera muy largo:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; | cut -d&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt; -f1 | sed &lt;span class=&quot;s1&quot;&gt;'s/blablabla//g'&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f1&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/blablabla//g'&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Posteriormente descubrí que era más práctico usar &lt;code class=&quot;highlighter-rouge&quot;&gt;basename&lt;/code&gt; para obtener sufijos de los nombres de archivos. Más adelante les compartiré algunos ejemplos del MundoReal™.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;list
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;list
 &lt;span class=&quot;k&quot;&gt;do
-  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;basename &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; .fasta&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;option something_else -i &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;.output
+  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;basename&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; .fasta&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;option something_else &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;.output
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
-        <pubDate>Fri, 12 Aug 2016 09:09:06 -0500</pubDate>
-        <link>http://localhost:4000/2016/for-do-done/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/for-do-done/</guid>
+        <pubDate>Fri, 12 Aug 2016 16:09:06 +0200</pubDate>
+        <link>http://zorbax.github.io/2016/for-do-done/</link>
+        <guid isPermaLink="true">http://zorbax.github.io/2016/for-do-done/</guid>
         
         <category>bash</category>
         
@@ -242,17 +335,16 @@ ls &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.7z &amp;gt; list.txt
         <title>Hello world!</title>
         <description>&lt;p&gt;He sido usuario GNU/Linux desde 2007. Inicialmente utilicé Mandriva, posteriormente Ubuntu alternando entre Gnome y KDE, y a partir del 14 de Febrero de 2009 empecé a utilizar Debian, a excepción de un semestre que probé un &lt;em&gt;release&lt;/em&gt; de Fedora (Verne). Tuve mi etapa de Conky, Cairo Dock, Compiz, Plasma, pero recientemente son fan de lo sobrio, por lo que MATE es mi entorno favorito desde 2014. Por qué tanto énfasis en las fechas, bueno, me he dado cuenta de que llevo varios años utilizando Linux y nunca he tenido el tiempo -ni las ganas- de compartir algo de lo aprendido. Bueno, nunca es tarde para empezar.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello world!&quot;&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;No pretendo hacer un tutorial, describir un pipeline, ni mucho menos explicar las cuestiones básicas de Linux. La idea que tengo es compartir algunas utilidades y recomendaciones a la hora de usar herramientas GNU/Linux aplicadas a la Bioinformática. No soy especialista en ninguna rama de la computación, ni tengo educación formal en programación, por lo que mis recomendaciones quizá no sean las más estilizadas, pero funcionan. Espero les sea de utilidad.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 10 Aug 2016 18:31:23 -0500</pubDate>
-        <link>http://localhost:4000/2016/Hello-world/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/Hello-world/</guid>
+        <pubDate>Thu, 11 Aug 2016 01:31:23 +0200</pubDate>
+        <link>http://zorbax.github.io/2016/Hello-world/</link>
+        <guid isPermaLink="true">http://zorbax.github.io/2016/Hello-world/</guid>
         
         <category>random</category>
         

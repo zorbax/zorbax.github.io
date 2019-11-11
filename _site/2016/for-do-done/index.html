@@ -54,8 +54,8 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
   
-  <link rel="stylesheet" href="/css/main.css?1506824772837201063">
-  <link rel="canonical" href="http://localhost:4000/2016/for-do-done/">
+  <link rel="stylesheet" href="/css/main.css?1573122882024449000">
+  <link rel="canonical" href="http://zorbax.github.io/2016/for-do-done/">
   <link rel="alternate" type="application/rss+xml" title="Otoniel Maya" href="/feed.xml">
 </head>
 
@@ -153,8 +153,8 @@
   <section class="post">
     <p>Buscando entre mis archivos más antiguos encontré mi <em>primer script</em>. No hackeé nada, no me conecté a la <em>deep web</em>, no hice nada espectacular, simplemente hice un loop para descomprimir archivos. Igual y fui yo, igual y fue Stackoverflow pero estas lineas fueron las primeras que ejecuté sabiendo qué hacía cada una de ellas.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-<span class="nv">list</span><span class="o">=</span><span class="sb">`</span>ls | grep <span class="s2">"7z"</span><span class="sb">`</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nv">list</span><span class="o">=</span><span class="sb">`</span><span class="nb">ls</span> | <span class="nb">grep</span> <span class="s2">"7z"</span><span class="sb">`</span>
 
 <span class="k">for </span>i <span class="k">in</span> <span class="nv">$list</span>
 <span class="k">do
@@ -162,11 +162,10 @@
 <span class="k">done
 
 </span><span class="nb">exit </span>0
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>No era para tanto, bien pude haber ejecutado el loop para una lista utilizando el metacaracter <em>glob</em> (*): <code class="highlighter-rouge">for i in *7z; do 7z x $i; done</code> en una sola linea. Lo interesante es que fue la primera vez que definí una variable como lista con la salida de dos comandos(<code class="highlighter-rouge">ls</code> y <code class="highlighter-rouge">grep</code>) y por cada elemento (<code class="highlighter-rouge">$i</code>) listado en esa variable-lista ejecuté <code class="highlighter-rouge">7z</code> para descomprimir dicho elemento. Con el tiempo aprendí que existen muchas maneras diferentes, pero la manera más simple es mejor, apelando un poco al principio de la Navaja de Ockham.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="c">#Si sólo con 4 archivos, pero son muy grandes y descomprimirlos</span>
 <span class="c">#uno por uno tomaría mucho tiempo.</span>
@@ -175,9 +174,8 @@
 <span class="k">do
   </span>7z x <span class="nv">$i</span>
 <span class="k">done</span>
-</code></pre>
-</div>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="c">#Si tienes archivos seriados, como en el caso de un output</span>
 <span class="c">#de Illumina en el que se usaron identificadores consecutivos.</span>
@@ -185,9 +183,8 @@
 <span class="k">do
   </span>7z x <span class="nv">$i</span>
 <span class="k">done</span>
-</code></pre>
-</div>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="nv">list</span><span class="o">=</span><span class="s2">"*7z"</span>
 
 <span class="c">#Para todos aquellos archivos que tengan</span>
@@ -196,47 +193,42 @@
 <span class="k">do
   </span>7z x <span class="nv">$i</span>
 <span class="k">done</span>
-</code></pre>
-</div>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-ls <span class="k">*</span>.7z &gt; list.txt
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">ls</span> <span class="k">*</span>.7z <span class="o">&gt;</span> list.txt
 
 <span class="c">#Listar archivos, eviar a un archivo, abrie el archivo</span>
 <span class="c">#cada momento que se ejecuta el loop... No es lo más eficiente</span>
 <span class="c">#pero es una forma de hacerlo.</span>
-<span class="k">for </span>i <span class="k">in</span> <span class="sb">`</span>cat list.txt<span class="sb">`</span>
+<span class="k">for </span>i <span class="k">in</span> <span class="sb">`</span><span class="nb">cat </span>list.txt<span class="sb">`</span>
 <span class="k">do
   </span>7z x <span class="nv">$i</span>
 <span class="k">done</span>
-</code></pre>
-</div>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="c">#En este caso el archivo no se abre con cat sino que</span>
 <span class="c">#"pasa" directamente como input al shell.</span>
-<span class="k">for </span>i <span class="k">in</span> <span class="k">$(</span>&lt;list.txt<span class="k">)</span>;
+<span class="k">for </span>i <span class="k">in</span> <span class="si">$(</span>&lt;list.txt<span class="si">)</span><span class="p">;</span>
 <span class="k">do
   </span>7z x <span class="nv">$i</span>
 <span class="k">done</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Este tipo de loops es extremadamente útil, pero la característica principal que noto es que el <em>output</em> del comando ejecutado en cada <em>loop</em> es diferente al <em>input</em> y se genera automáticamente por el comando utilizado. Es decir, tengo un archivo <code class="highlighter-rouge">reads.fasta</code> el programa automáticamente generará <code class="highlighter-rouge">reads.something.fasta</code>. Si tengo que definir el nombre del output y lo defino como <code class="highlighter-rouge">command -i $i -o $i.something.fasta</code> y mi <code class="highlighter-rouge">$i</code> es <code class="highlighter-rouge">reads.fasta</code>, obtendré algo como <code class="highlighter-rouge">reads.fasta.something.fasta</code>, que tendrá el resultado esperado del comando pero tendrá un nombre redundante.</p>
 
 <p>Originalmente definía una variable que me permitiera obtener el nombre, empleando sustituciones en caso de que el nombre fuera muy largo:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">name</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$i</span> | cut -d<span class="se">\.</span> -f1 | sed <span class="s1">'s/blablabla//g'</span><span class="sb">`</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">name</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$i</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="se">\.</span> <span class="nt">-f1</span> | <span class="nb">sed</span> <span class="s1">'s/blablabla//g'</span><span class="sb">`</span>
+</code></pre></div></div>
 
 <p>Posteriormente descubrí que era más práctico usar <code class="highlighter-rouge">basename</code> para obtener sufijos de los nombres de archivos. Más adelante les compartiré algunos ejemplos del MundoReal™.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="k">for </span>i <span class="k">in </span>list
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>i <span class="k">in </span>list
 <span class="k">do
-  </span><span class="nv">name</span><span class="o">=</span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> .fasta<span class="k">)</span>
-  <span class="nb">command </span>option something_else -i <span class="nv">$i</span> -o <span class="nv">$name</span>.output
+  </span><span class="nv">name</span><span class="o">=</span><span class="si">$(</span><span class="nb">basename</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> .fasta<span class="si">)</span>
+  <span class="nb">command </span>option something_else <span class="nt">-i</span> <span class="nv">$i</span> <span class="nt">-o</span> <span class="nv">$name</span>.output
 <span class="k">done</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
   </section>
   <section id="disqus_thread"></section><!-- /#disqus_thread -->
@@ -244,7 +236,7 @@ ls <span class="k">*</span>.7z &gt; list.txt
 
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://localhost:4000/2016/for-do-done/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.url = 'http://zorbax.github.io/2016/for-do-done/';  // Replace PAGE_URL with your page's canonical URL variable
         this.page.identifier = '/2016/for-do-done'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
 
@@ -263,11 +255,11 @@ ls <span class="k">*</span>.7z &gt; list.txt
       </div>
 
       <footer class="footer">
-  <span class="footer__copyright">&copy; 2017 O. Maya. All rights reserved.</span>
+  <span class="footer__copyright">&copy; 2019 O. Maya. All rights reserved.</span>
 </footer>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="/js/main.js?1506824772837201063"></script>
+<script type="text/javascript" src="/js/main.js?1573122882024449000"></script>
 
 
     </div>
