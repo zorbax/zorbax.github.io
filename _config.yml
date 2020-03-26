@@ -1,17 +1,19 @@
 # Site settings
 title: Otoniel Maya
 title_nick: '@zorbax'
-description: 'Bioinformático'
+description: 'Bioinformagician'
 url: 'http://zorbax.github.io'
 baseurl: ''
 google_analytics: 'UA-82378315-1'
 disqus_shortname: 'zorbax-blog'
 
 author:
-  name: 'O. Maya'
+  name: "O. Maya"
   email: otto94@gmail.com
   twitter_username: zorbax
-  github_username:  zorbax
+  linkedin_username: zorbax
+  github_username: zorbax
+
 
 defaults:
   -
