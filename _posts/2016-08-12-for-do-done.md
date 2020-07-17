@@ -45,8 +45,7 @@ done
 #!/bin/bash
 list="*7z"
 
-#Para todos aquellos archivos que tengan
-#extensión 7z.
+#Para todos aquellos archivos que tengan extensión 7z.
 for i in $list
 do
   7z x $i
