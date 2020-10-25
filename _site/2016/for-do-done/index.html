@@ -43,7 +43,7 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="/css/main.css?1603648893151198000">
+  <link rel="stylesheet" href="/css/main.css?1603661150132678000">
   <link rel="canonical" href="http://localhost:4000/2016/for-do-done/">
   <link rel="alternate" type="application/rss+xml" title="Otoniel Maya" href="/feed.xml">
 </head>
@@ -165,7 +165,7 @@
 
 </span><span class="nb">exit </span>0
 </code></pre></div></div>
-<p>No era para tanto, bien pude haber ejecutado el loop para una lista utilizando el metacaracter <em>glob</em> (*): <code class="highlighter-rouge">for i in *7z; do 7z x $i; done</code> en una sola linea. Lo interesante es que fue la primera vez que definí una variable como lista con la salida de dos comandos(<code class="highlighter-rouge">ls</code> y <code class="highlighter-rouge">grep</code>) y por cada elemento (<code class="highlighter-rouge">$i</code>) listado en esa variable-lista ejecuté <code class="highlighter-rouge">7z</code> para descomprimir dicho elemento. Con el tiempo aprendí que existen muchas maneras diferentes, pero la manera más simple es mejor, apelando un poco al principio de la Navaja de Ockham.</p>
+<p>No era para tanto, bien pude haber ejecutado el loop para una lista utilizando el metacaracter <em>glob</em> (*): <code class="language-plaintext highlighter-rouge">for i in *7z; do 7z x $i; done</code> en una sola linea. Lo interesante es que fue la primera vez que definí una variable como lista con la salida de dos comandos(<code class="language-plaintext highlighter-rouge">ls</code> y <code class="language-plaintext highlighter-rouge">grep</code>) y por cada elemento (<code class="language-plaintext highlighter-rouge">$i</code>) listado en esa variable-lista ejecuté <code class="language-plaintext highlighter-rouge">7z</code> para descomprimir dicho elemento. Con el tiempo aprendí que existen muchas maneras diferentes, pero la manera más simple es mejor, apelando un poco al principio de la Navaja de Ockham.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
@@ -215,14 +215,14 @@
 <span class="k">done</span>
 </code></pre></div></div>
 
-<p>Este tipo de loops es extremadamente útil, pero la característica principal que noto es que el <em>output</em> del comando ejecutado en cada <em>loop</em> es diferente al <em>input</em> y se genera automáticamente por el comando utilizado. Es decir, tengo un archivo <code class="highlighter-rouge">reads.fasta</code> el programa automáticamente generará <code class="highlighter-rouge">reads.something.fasta</code>. Si tengo que definir el nombre del output y lo defino como <code class="highlighter-rouge">command -i $i -o $i.something.fasta</code> y mi <code class="highlighter-rouge">$i</code> es <code class="highlighter-rouge">reads.fasta</code>, obtendré algo como <code class="highlighter-rouge">reads.fasta.something.fasta</code>, que tendrá el resultado esperado del comando pero tendrá un nombre redundante.</p>
+<p>Este tipo de loops es extremadamente útil, pero la característica principal que noto es que el <em>output</em> del comando ejecutado en cada <em>loop</em> es diferente al <em>input</em> y se genera automáticamente por el comando utilizado. Es decir, tengo un archivo <code class="language-plaintext highlighter-rouge">reads.fasta</code> el programa automáticamente generará <code class="language-plaintext highlighter-rouge">reads.something.fasta</code>. Si tengo que definir el nombre del output y lo defino como <code class="language-plaintext highlighter-rouge">command -i $i -o $i.something.fasta</code> y mi <code class="language-plaintext highlighter-rouge">$i</code> es <code class="language-plaintext highlighter-rouge">reads.fasta</code>, obtendré algo como <code class="language-plaintext highlighter-rouge">reads.fasta.something.fasta</code>, que tendrá el resultado esperado del comando pero tendrá un nombre redundante.</p>
 
 <p>Originalmente definía una variable que me permitiera obtener el nombre, empleando sustituciones en caso de que el nombre fuera muy largo:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">name</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$i</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="se">\.</span> <span class="nt">-f1</span> | <span class="nb">sed</span> <span class="s1">'s/blablabla//g'</span><span class="sb">`</span>
 </code></pre></div></div>
 
-<p>Posteriormente descubrí que era más práctico usar <code class="highlighter-rouge">basename</code> para obtener sufijos de los nombres de archivos. Más adelante les compartiré algunos ejemplos del MundoReal™.</p>
+<p>Posteriormente descubrí que era más práctico usar <code class="language-plaintext highlighter-rouge">basename</code> para obtener sufijos de los nombres de archivos. Más adelante les compartiré algunos ejemplos del MundoReal™.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>i <span class="k">in </span>list
 <span class="k">do
@@ -260,7 +260,7 @@
 </footer>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/main.js?1603648893151198000"></script>
+<script type="text/javascript" src="/js/main.js?1603661150132678000"></script>
 
 
     </div>

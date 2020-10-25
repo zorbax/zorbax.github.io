@@ -43,7 +43,7 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="/css/main.css?1603648893151198000">
+  <link rel="stylesheet" href="/css/main.css?1603661150132678000">
   <link rel="canonical" href="http://localhost:4000/2016/Entornos-virtuales-python/">
   <link rel="alternate" type="application/rss+xml" title="Otoniel Maya" href="/feed.xml">
 </head>
@@ -153,9 +153,9 @@
   </header>
 
   <section class="post">
-    <p>En Python es común utilizar diferentes versiones de un mismo paquete. Les menciono nos casos partículares utilizados en bioinformática: <code class="highlighter-rouge">biom-format</code> y <code class="highlighter-rouge">matplotlib</code>. Puede ser que simplemente hagas <em>downgrade</em> o <em>upgrade</em> a la versión que desees cada vez que vayas a utilizar el programa, pero honestamente resulta un poco molesto porque luego no recuerdo qué versión necesita qué programa. La solución es instalar las dos o más versiones de la misma librería a fin de poder ejecutar cada programa con su respectiva dependencia. Para ello se utiliza los <em>entornos virtuales</em> o <code class="highlighter-rouge">virtualenv</code>. En pocas palabras, un entorno virtual de Python es un espacio independiente en el que puedes instalar paquetes diferentes a los del sistema y te permite utilizar tantos entornos como aplicaciones tengas.</p>
+    <p>En Python es común utilizar diferentes versiones de un mismo paquete. Les menciono nos casos partículares utilizados en bioinformática: <code class="language-plaintext highlighter-rouge">biom-format</code> y <code class="language-plaintext highlighter-rouge">matplotlib</code>. Puede ser que simplemente hagas <em>downgrade</em> o <em>upgrade</em> a la versión que desees cada vez que vayas a utilizar el programa, pero honestamente resulta un poco molesto porque luego no recuerdo qué versión necesita qué programa. La solución es instalar las dos o más versiones de la misma librería a fin de poder ejecutar cada programa con su respectiva dependencia. Para ello se utiliza los <em>entornos virtuales</em> o <code class="language-plaintext highlighter-rouge">virtualenv</code>. En pocas palabras, un entorno virtual de Python es un espacio independiente en el que puedes instalar paquetes diferentes a los del sistema y te permite utilizar tantos entornos como aplicaciones tengas.</p>
 
-<p>Para poder crear dichos entornos es necesario instalar la utilidad <code class="highlighter-rouge">virtualenv</code>. Para Python 2.7 :</p>
+<p>Para poder crear dichos entornos es necesario instalar la utilidad <code class="language-plaintext highlighter-rouge">virtualenv</code>. Para Python 2.7 :</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Debian, Ubuntu</span>
 
@@ -171,7 +171,7 @@ pip <span class="nb">install </span>virtualenv
 
 </code></pre></div></div>
 
-<p>Normalmente todos los entornos virtuales los tengo en un sólo lugar: <code class="highlighter-rouge">$HOME/bin/python/</code>. Para crear un <em>virtualenv</em> simplemente se ejecuta:</p>
+<p>Normalmente todos los entornos virtuales los tengo en un sólo lugar: <code class="language-plaintext highlighter-rouge">$HOME/bin/python/</code>. Para crear un <em>virtualenv</em> simplemente se ejecuta:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>virtualenv <span class="nv">$HOME</span>/bin/python/my_project
 </code></pre></div></div>
@@ -200,7 +200,7 @@ pip <span class="nb">install </span>virtualenv
     └── lib -&gt; /home/zorbax/bin/python/my_project/lib
 </code></pre></div></div>
 
-<p>En el directorio <code class="highlighter-rouge">bin/</code> se encuentran los ejecutables necesarios para interactuar con el <em>virtualenv</em>. En <code class="highlighter-rouge">include/</code> se encuentran algunos archivos de cabecera de C (*.h) necesarios para compilar algunas librerías de Python. Y en <code class="highlighter-rouge">lib/</code> se encuentra una copia de Python así como un directorio llamado <code class="highlighter-rouge">site-packages/</code> en el cual se aloja el código fuente de los paquetes Python instalados en el virtualenv. Para activar el entorno virtual, se procesa el archivo <code class="highlighter-rouge">bin/activate</code> que se encuentra en la carpeta <em>my_project</em>:</p>
+<p>En el directorio <code class="language-plaintext highlighter-rouge">bin/</code> se encuentran los ejecutables necesarios para interactuar con el <em>virtualenv</em>. En <code class="language-plaintext highlighter-rouge">include/</code> se encuentran algunos archivos de cabecera de C (*.h) necesarios para compilar algunas librerías de Python. Y en <code class="language-plaintext highlighter-rouge">lib/</code> se encuentra una copia de Python así como un directorio llamado <code class="language-plaintext highlighter-rouge">site-packages/</code> en el cual se aloja el código fuente de los paquetes Python instalados en el virtualenv. Para activar el entorno virtual, se procesa el archivo <code class="language-plaintext highlighter-rouge">bin/activate</code> que se encuentra en la carpeta <em>my_project</em>:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>██ zorbax@beatrix
 ██ ~
@@ -212,21 +212,21 @@ pip <span class="nb">install </span>virtualenv
 ██ ┗<span class="o">(</span><span class="nt">-_-</span> <span class="o">)</span>┓ <span class="err">$</span>
 </code></pre></div></div>
 
-<p>El prompt de la terminal indica que el virtualenv en my_project ya está activado y se procede a instalar las librerías necesarias en las versiones deseadas. Para ello se utiliza <code class="highlighter-rouge">pip</code>:</p>
+<p>El prompt de la terminal indica que el virtualenv en my_project ya está activado y se procede a instalar las librerías necesarias en las versiones deseadas. Para ello se utiliza <code class="language-plaintext highlighter-rouge">pip</code>:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>my_project<span class="o">)</span><span class="nv">$ </span>pip <span class="nb">install </span>my_library_version1.1.3
 </code></pre></div></div>
 
 <p>Al terminar la instalación estaremos utilizando la versión específica requerida para el programa.</p>
 
-<p>El prompt de la terminal indica que el <em>virtualenv</em> está activado. Esto nos permitirá utilizar los paquetes instalados e instalar paquetes adicionales. Para desactivar un <em>virtualenv</em> porque se necesita trabajar en otro diferente se ejecuta el comando <code class="highlighter-rouge">deactivate</code>. No es necesario ir a la carpeta del virtualenv para realizar la operación:</p>
+<p>El prompt de la terminal indica que el <em>virtualenv</em> está activado. Esto nos permitirá utilizar los paquetes instalados e instalar paquetes adicionales. Para desactivar un <em>virtualenv</em> porque se necesita trabajar en otro diferente se ejecuta el comando <code class="language-plaintext highlighter-rouge">deactivate</code>. No es necesario ir a la carpeta del virtualenv para realizar la operación:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>my_project<span class="o">)</span> ██ zorbax@beatrix
 ██ ~
 ██ ┗<span class="o">(</span><span class="nt">-_-</span> <span class="o">)</span>┓ <span class="nv">$ </span>deactivate
 </code></pre></div></div>
 
-<p>El prompt de la terminal indica que el virtualenv ha sido desactivado. Si se utiliza demasiados entornos virtuales podría ser un poco confuso, pero para ese inconveniente podremos utilizar una extensión de <code class="highlighter-rouge">virtualenv</code> llamada <code class="highlighter-rouge">virtualenvwrapper</code>, pero esa es otra historia.</p>
+<p>El prompt de la terminal indica que el virtualenv ha sido desactivado. Si se utiliza demasiados entornos virtuales podría ser un poco confuso, pero para ese inconveniente podremos utilizar una extensión de <code class="language-plaintext highlighter-rouge">virtualenv</code> llamada <code class="language-plaintext highlighter-rouge">virtualenvwrapper</code>, pero esa es otra historia.</p>
 
   </section>
   <section id="disqus_thread"></section><!-- /#disqus_thread -->
@@ -257,7 +257,7 @@ pip <span class="nb">install </span>virtualenv
 </footer>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/main.js?1603648893151198000"></script>
+<script type="text/javascript" src="/js/main.js?1603661150132678000"></script>
 
 
     </div>
