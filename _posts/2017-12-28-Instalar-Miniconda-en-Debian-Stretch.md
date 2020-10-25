@@ -1,5 +1,5 @@
 ---
-title: Instalar Miniconda2 en Debian Stretch
+title: Instalar Miniconda3 en Debian Stretch
 date: 2017-12-28T22:34:02.000Z
 categories: [blog]
 tags: [python, conda, debian]
@@ -33,7 +33,7 @@ source $HOME/.bashrc
 ```
 
 En terminal para obtener la información correspondiente a nuestro
-entorno base de conda. 
+entorno base de conda.
 ```
 conda info
 ```
