@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <meta name="robots" content="noindex">
-  
 
-  <title>Otoniel Maya</title>
-  <meta name="description" content="Bioinformagician">
+  <title>Codificación no valida</title>
+  <meta name="description" content="Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: BÃ¤nd - Some T�tle.file
+
+">
   <meta name="author" content="O. Maya">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
@@ -17,8 +17,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Otoniel Maya">
-  <meta property="og:description" content="Bioinformagician">
+  <meta property="og:title" content="Codificación no valida">
+  <meta property="og:description" content="Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: BÃ¤nd - Some T�tle.file
+
+">
   <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
 
   <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
@@ -42,7 +44,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <link rel="stylesheet" href="/css/main.css?1603666198804603000">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/2016/codificacio-n-no-va-lida/">
   <link rel="alternate" type="application/rss+xml" title="Otoniel Maya" href="/feed.xml">
 </head>
 
@@ -139,102 +141,53 @@
 
     <div class="content-wrapper">
       <div class="content-wrapper__inner">
-        <div class="main-post-list">
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-15 12:54" class="post-meta__date date">15 Aug 2016</time>
+      
+      &#8226; <span class="post-meta__tags">on <a href="/tags/#bash">bash</a>, <a href="/tags/#debian">debian</a></span>
+      
+    </div>
+    <h1 class="post-title">Codificación no valida</h1>
+  </header>
 
-  <ol class="post-list">
-    
-      <li>
-        <h2 class="post-list__post-title post-title"><a href="/2017/Instalar-Miniconda-en-Debian-Stretch/" title="Instalar Miniconda3 en Debian Stretch">Instalar Miniconda3 en Debian Stretch</a></h2>
-        <p class="excerpt">Actualización: 16 de julio de 2020
+  <section class="post">
+    <p>Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: <code class="language-plaintext highlighter-rouge">BÃ¤nd - Some T�tle.file</code></p>
 
-&hellip;</p>
-        <div class="post-list__meta">
-            <time datetime="2017-12-28 23:34" class="post-list__meta--date date">28 Dec 2017</time>
-            
-            &#8226; <span class="post-meta__tags">on <a href="/tags/#python">python</a>, <a href="/tags/#conda">conda</a>, <a href="/tags/#debian">debian</a></span>
-            
-        </div>
-        <hr class="post-list__divider">
-      </li>
-    
-      <li>
-        <h2 class="post-list__post-title post-title"><a href="/2017/Cambiar-la-ubicacio-n-del-Docker-Root-Dir/" title="Cambiar la ubicación del Docker Root Dir">Cambiar la ubicación del Docker Root Dir</a></h2>
-        <p class="excerpt">El siguiente post es una guía para cambiar la ubicación de la carpeta que Docker tiene por default para almacenar
-sus contenedores: /var/lib/docker.
+<p>Los archivos que tengo fueron comprimidos(?) en Güindos, utilizando la codificación latina ISO-8859-1 o la codificación ISO-8859-5, utilizada para alfabetos cirílicos que es de donde obtengo… bueno, no tengo por qué dar explicaciones.</p>
 
-&hellip;</p>
-        <div class="post-list__meta">
-            <time datetime="2017-12-05 17:02" class="post-list__meta--date date">5 Dec 2017</time>
-            
-            &#8226; <span class="post-meta__tags">on <a href="/tags/#docker">docker</a>, <a href="/tags/#debian">debian</a></span>
-            
-        </div>
-        <hr class="post-list__divider">
-      </li>
-    
-      <li>
-        <h2 class="post-list__post-title post-title"><a href="/2016/Entornos-virtuales-python/" title="Entornos virtuales en Python">Entornos virtuales en Python</a></h2>
-        <p class="excerpt">En Python es común utilizar diferentes versiones de un mismo paquete. Les menciono nos casos partículares utilizados en bioinformática: biom-format y matplotlib. Puede ser que simplemente hagas downgrade o upgrade a la versión que desees cada vez que vayas a utilizar el programa, pero honestamente resulta un poco molesto porque luego no recuerdo qué versión necesita qué programa. La solución es instalar las dos o más versiones de la misma librería a fin de poder ejecutar cada programa con su respectiva dependencia. Para ello se utiliza los entornos virtuales o virtualenv. En pocas palabras, un entorno virtual de Python es un espacio independiente en el que puedes instalar paquetes diferentes a los del sistema y te permite utilizar tantos entornos como aplicaciones tengas.
+<p>Primeramente se instala <code class="language-plaintext highlighter-rouge">convmv</code> para convertir el archivo a la codificación correspondiente:</p>
 
-&hellip;</p>
-        <div class="post-list__meta">
-            <time datetime="2016-08-17 14:02" class="post-list__meta--date date">17 Aug 2016</time>
-            
-            &#8226; <span class="post-meta__tags">on <a href="/tags/#python">python</a>, <a href="/tags/#debian">debian</a></span>
-            
-        </div>
-        <hr class="post-list__divider">
-      </li>
-    
-      <li>
-        <h2 class="post-list__post-title post-title"><a href="/2016/codificacio-n-no-va-lida/" title="Codificación no valida">Codificación no valida</a></h2>
-        <p class="excerpt">Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: BÃ¤nd - Some T�tle.file
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>convmv
+</code></pre></div></div>
 
-&hellip;</p>
-        <div class="post-list__meta">
-            <time datetime="2016-08-15 12:54" class="post-list__meta--date date">15 Aug 2016</time>
-            
-            &#8226; <span class="post-meta__tags">on <a href="/tags/#bash">bash</a>, <a href="/tags/#debian">debian</a></span>
-            
-        </div>
-        <hr class="post-list__divider">
-      </li>
-    
-      <li>
-        <h2 class="post-list__post-title post-title"><a href="/2016/for-do-done/" title="for-do-done">for-do-done</a></h2>
-        <p class="excerpt">Buscando entre mis archivos más antiguos encontré mi primer script. No hackeé nada, no me conecté a la deep web, no hice nada espectacular, simplemente hice un loop para descomprimir archivos. Igual y fui yo, igual y fue Stackoverflow pero estas lineas fueron las primeras que ejecuté sabiendo qué hacía cada una de ellas.
+<p>Luego, buscamos los archivos que contengan alǵún caracter desconocido <code class="language-plaintext highlighter-rouge">?</code>, usando <code class="language-plaintext highlighter-rouge">xargs</code> ejecutamos <code class="language-plaintext highlighter-rouge">convmv</code> a la búsqueda.</p>
 
-&hellip;</p>
-        <div class="post-list__meta">
-            <time datetime="2016-08-12 16:09" class="post-list__meta--date date">12 Aug 2016</time>
-            
-            &#8226; <span class="post-meta__tags">on <a href="/tags/#bash">bash</a></span>
-            
-        </div>
-        <hr class="post-list__divider">
-      </li>
-    
-      <li>
-        <h2 class="post-list__post-title post-title"><a href="/2016/Hello-world/" title="Hello world!">Hello world!</a></h2>
-        <p class="excerpt">He sido usuario GNU/Linux desde 2007. Inicialmente utilicé Mandriva, posteriormente Ubuntu alternando entre Gnome y KDE, y a partir del 14 de Febrero de 2009 empecé a utilizar Debian, a excepción de un semestre que probé un release de Fedora (Verne). Tuve mi etapa de Conky, Cairo Dock, Compiz, Plasma, pero recientemente son fan de lo sobrio, por lo que MATE es mi entorno favorito desde 2014. Por qué tanto énfasis en las fechas, bueno, me he dado cuenta de que llevo varios años utilizando Linux y nunca he tenido el tiempo -ni las ganas- de compartir algo de lo aprendido. Bueno, nunca es tarde para empezar.
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s1">'?'</span> | xargs convmv <span class="nt">-r</span> <span class="nt">--notest</span> <span class="nt">-f</span> ISO-8859-1 <span class="nt">-t</span> UTF-8
+</code></pre></div></div>
 
-&hellip;</p>
-        <div class="post-list__meta">
-            <time datetime="2016-08-11 01:31" class="post-list__meta--date date">11 Aug 2016</time>
-            
-            &#8226; <span class="post-meta__tags">on <a href="/tags/#random">random</a></span>
-            
-        </div>
-        <hr class="post-list__divider">
-      </li>
-    
-  </ol>
+  </section>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+</article>
 
-  <hr class="post-list__divider ">
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/2016/codificacio-n-no-va-lida/';
+        this.page.identifier = '/2016/codificación-no-válida';
+      };
 
-  
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//zorbax-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+       })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-</div>
+
 
       </div>
 
