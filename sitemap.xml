@@ -3,7 +3,7 @@
   
     
     <url>
-      <loc>http://localhost:4000/2017/Instalar-Miniconda-en-Debian-Stretch/</loc>
+      <loc>https://zorbax.github.io/2017/Instalar-Miniconda-en-Debian-Stretch/</loc>
       
         <lastmod>2017-12-28T23:34:02+01:00</lastmod>
       
@@ -18,7 +18,7 @@
   
     
     <url>
-      <loc>http://localhost:4000/2017/Cambiar-la-ubicacio-n-del-Docker-Root-Dir/</loc>
+      <loc>https://zorbax.github.io/2017/Cambiar-la-ubicacio-n-del-Docker-Root-Dir/</loc>
       
         <lastmod>2017-12-05T17:02:01+01:00</lastmod>
       
@@ -33,7 +33,7 @@
   
     
     <url>
-      <loc>http://localhost:4000/2016/Entornos-virtuales-python/</loc>
+      <loc>https://zorbax.github.io/2016/Entornos-virtuales-python/</loc>
       
         <lastmod>2016-08-17T14:02:47+02:00</lastmod>
       
@@ -48,7 +48,7 @@
   
     
     <url>
-      <loc>http://localhost:4000/2016/codificacio-n-no-va-lida/</loc>
+      <loc>https://zorbax.github.io/2016/codificacio-n-no-va-lida/</loc>
       
         <lastmod>2016-08-15T12:54:18+02:00</lastmod>
       
@@ -63,7 +63,7 @@
   
     
     <url>
-      <loc>http://localhost:4000/2016/for-do-done/</loc>
+      <loc>https://zorbax.github.io/2016/for-do-done/</loc>
       
         <lastmod>2016-08-12T16:09:06+02:00</lastmod>
       
@@ -78,7 +78,7 @@
   
     
     <url>
-      <loc>http://localhost:4000/2016/Hello-world/</loc>
+      <loc>https://zorbax.github.io/2016/Hello-world/</loc>
       
         <lastmod>2016-08-11T01:31:23+02:00</lastmod>
       
@@ -94,9 +94,9 @@
   
     
     <url>
-      <loc>http://localhost:4000/about</loc>
+      <loc>https://zorbax.github.io/about</loc>
       
-        <lastmod>2024-06-12T21:12:12+02:00</lastmod>
+        <lastmod>2024-06-13T22:56:06+02:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -115,9 +115,9 @@
   
     
     <url>
-      <loc>http://localhost:4000/css/main.css</loc>
+      <loc>https://zorbax.github.io/css/main.css</loc>
       
-        <lastmod>2024-06-12T21:12:12+02:00</lastmod>
+        <lastmod>2024-06-13T22:56:06+02:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -134,9 +134,9 @@
   
     
     <url>
-      <loc>http://localhost:4000/assets/css/style.css</loc>
+      <loc>https://zorbax.github.io/assets/css/style.css</loc>
       
-        <lastmod>2024-06-12T21:12:12+02:00</lastmod>
+        <lastmod>2024-06-13T22:56:06+02:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
