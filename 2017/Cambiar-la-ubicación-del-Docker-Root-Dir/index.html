@@ -6,8 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
 
-  <title>Codificación no valida</title>
-  <meta name="description" content="Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: BÃ¤nd - Some T�tle.file
+  <title>Cambiar la ubicación del Docker Root Dir</title>
+  <meta name="description" content="El siguiente post es una guía para cambiar la ubicación de la carpeta que Docker tiene por default para almacenar
+sus contenedores: /var/lib/docker.
 
 ">
   <meta name="author" content="O. Maya">
@@ -17,8 +18,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Codificación no valida">
-  <meta property="og:description" content="Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: BÃ¤nd - Some T�tle.file
+  <meta property="og:title" content="Cambiar la ubicación del Docker Root Dir">
+  <meta property="og:description" content="El siguiente post es una guía para cambiar la ubicación de la carpeta que Docker tiene por default para almacenar
+sus contenedores: /var/lib/docker.
 
 ">
   <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
@@ -33,8 +35,8 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="/css/main.css?1718312166060646000">
-  <link rel="canonical" href="https://zorbax.github.io/2016/codificacio-n-no-va-lida/">
+  <link rel="stylesheet" href="/css/main.css?1722590149053432892">
+  <link rel="canonical" href="http://localhost:4000/2017/Cambiar-la-ubicaci%C3%B3n-del-Docker-Root-Dir/">
   <link rel="alternate" type="application/rss+xml" title="Otoniel Maya" href="/feed.xml">
   <script src="https://kit.fontawesome.com/1109340325.js" crossorigin="anonymous"></script>
   
@@ -64,15 +66,15 @@
         <div class="panel-main__inner panel-inverted">
             <div class="panel-main__content">
                 <a href="" title="Home">
-                    <img src="/images/profile.jpg" class="user-image" alt="zorbax">
+                    <img src="/images/profile.png" class="user-image" alt="zorbax">
                     <h1 class="panel-cover__title panel-title">Otoniel Maya</h1>
                     <h3 class="panel-cover__title panel-title-nick">@zorbax</h3>
                 </a>
 
                 <hr class="panel-cover__divider">
                 <p class="panel-cover__description">Bioinformagician</p>
-                <hr class="panel-cover__divider panel-cover__divider--secondary">
-                <h5 class="panel-cover__links"><a href="/about">Acerca de mí</a></h5>
+                <hr class="panel-cover__divider">
+                <h4 class="panel-cover__links"><a href="/about">Acerca de mí</a></h4>
                 <hr class="panel-cover__divider panel-cover__divider--secondary">
 
                 <div class="navigation-wrapper">
@@ -149,28 +151,65 @@
         <article class="post-container post-container--single">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2016-08-15 12:54" class="post-meta__date date">15 Aug 2016</time>
+      <time datetime="2017-12-05 17:02" class="post-meta__date date">5 Dec 2017</time>
       
-      &#8226; <span class="post-meta__tags">on <a href="/tags/#bash">bash</a>, <a href="/tags/#debian">debian</a></span>
+      &#8226; <span class="post-meta__tags">on <a href="/tags/#docker">docker</a>, <a href="/tags/#debian">debian</a></span>
       
     </div>
-    <h1 class="post-title">Codificación no valida</h1>
+    <h1 class="post-title">Cambiar la ubicación del Docker Root Dir</h1>
   </header>
 
   <section class="post">
-    <p>Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: <code class="language-plaintext highlighter-rouge">BÃ¤nd - Some T�tle.file</code></p>
+    <p>El siguiente post es una guía para cambiar la ubicación de la carpeta que Docker tiene por default para almacenar
+sus contenedores: <code class="language-plaintext highlighter-rouge">/var/lib/docker</code>.</p>
 
-<p>Los archivos que tengo fueron comprimidos(?) en Güindos, utilizando la codificación latina ISO-8859-1 o la codificación ISO-8859-5, utilizada para alfabetos cirílicos que es de donde obtengo… bueno, no tengo por qué dar explicaciones.</p>
+<p>La razón principal porque es práctico hacerlo es la falta de espacio en <code class="language-plaintext highlighter-rouge">/dev</code>. Estas instrucciones fueron probadas en Debian 9, supongo que funcionará
+en cualquier otro sistema que utilice systemd. No tiene mayor complicación, sigue las instrucciones:</p>
 
-<p>Primeramente se instala <code class="language-plaintext highlighter-rouge">convmv</code> para convertir el archivo a la codificación correspondiente:</p>
+<p>Lo primero que tenemos que hacer es modificar el script de inicio de Docker en el systemd. Como root abre el archivo con tu editor favorito.
+<code class="language-plaintext highlighter-rouge">/lib/systemd/system/docker.service</code> y reemplaza <code class="language-plaintext highlighter-rouge">/path/to/docker</code> con la nueva ubicación que deseas, <code class="language-plaintext highlighter-rouge">/home/zorbax/bin/docker</code>, en mi caso:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>convmv
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM:
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/dockerd <span class="nt">-H</span> fd://
+TO:
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/dockerd <span class="nt">-g</span> /path/to/docker <span class="nt">-H</span> fd://
 </code></pre></div></div>
 
-<p>Luego, buscamos los archivos que contengan alǵún caracter desconocido <code class="language-plaintext highlighter-rouge">?</code>, usando <code class="language-plaintext highlighter-rouge">xargs</code> ejecutamos <code class="language-plaintext highlighter-rouge">convmv</code> a la búsqueda.</p>
+<p>Una vez editado el archivo hay que detener el servicio de docker:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s1">'?'</span> | xargs convmv <span class="nt">-r</span> <span class="nt">--notest</span> <span class="nt">-f</span> ISO-8859-1 <span class="nt">-t</span> UTF-8
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># systemctl stop docker</span>
 </code></pre></div></div>
+
+<p>Es importante asegurarse que el demonio de Docker no se está ejecutando. En el siguiente comando no debe de aparecer el proceso:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ps aux | grep -i docker | grep -v grep</span>
+</code></pre></div></div>
+
+<p>Reiniciamos el demonio <code class="language-plaintext highlighter-rouge">systemd</code> una vez que nos aseguramos que no se estaba ejecutando docker:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># systemctl daemon-reload</span>
+</code></pre></div></div>
+
+<p>Ahora hay que crear el directorio que especificaste en el primer paso y opcionalmente
+sincronizar los datos que tengas actualmente a la neuva ubicación:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mkdir -p /home/zorbax/bin/docker</span>
+<span class="c"># rsync -aqxP /var/lib/docker/ /home/zorbax/bin/docker</span>
+</code></pre></div></div>
+
+<p>Iniciamos el demonio de docker:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># systemctl start docker</span>
+</code></pre></div></div>
+
+<p>Verificamos que docker se está ejecutando en el nuevo directori:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#  ps aux | grep -i docker | grep -v grep</span>
+root     27004  0.0  0.2 540456 45396 ?        Ssl  01:06   0:06 /usr/bin/dockerd <span class="nt">-g</span> /home/zorbax/bin/docker <span class="nt">-H</span> fd://
+root     27014  0.0  0.0 383052 10416 ?        Ssl  01:06   0:01 docker-containerd <span class="nt">-l</span> unix:///var/run/docker/libcontainerd/docker-containerd.sock <span class="nt">--metrics-interval</span><span class="o">=</span>0 <span class="nt">--start-timeout</span> 2m <span class="nt">--state-dir</span> /var/run/docker/libcontainerd/containerd <span class="nt">--shim</span> docker-containerd-shim <span class="nt">--runtime</span> docker-runc
+</code></pre></div></div>
+
+<p>¡Listo!</p>
 
   </section>
   <section id="disqus_thread"></section><!-- /#disqus_thread -->
@@ -178,8 +217,8 @@
 
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://zorbax.github.io/2016/codificacio-n-no-va-lida/';
-        this.page.identifier = '/2016/codificación-no-válida';
+        this.page.url = 'http://localhost:4000/2017/Cambiar-la-ubicaci%C3%B3n-del-Docker-Root-Dir/';
+        this.page.identifier = '/2017/Cambiar-la-ubicación-del-Docker-Root-Dir';
       };
 
       (function() {
@@ -201,7 +240,7 @@
 </footer>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/main.js?1718312166060646000"></script>
+<script type="text/javascript" src="/js/main.js?1722590149053432892"></script>
 
 
     </div>
