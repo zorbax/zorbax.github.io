@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <meta name="robots" content="noindex">
-  
 
-  <title>Categories</title>
-  <meta name="description" content="Bioinformagician">
+  <title>Codificación no valida</title>
+  <meta name="description" content="Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: BÃ¤nd - Some T�tle.file
+
+">
   <meta name="author" content="O. Maya">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
@@ -17,8 +17,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Categories">
-  <meta property="og:description" content="Bioinformagician">
+  <meta property="og:title" content="Codificación no valida">
+  <meta property="og:description" content="Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: BÃ¤nd - Some T�tle.file
+
+">
   <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
   
   <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
@@ -32,7 +34,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <link rel="stylesheet" href="/css/main.css?1740560860011381000">
-  <link rel="canonical" href="https://zorbax.github.io/categories/">
+  <link rel="canonical" href="https://zorbax.github.io/2016/codificacio-n-no-va-lida/">
   <link rel="alternate" type="application/rss+xml" title="Otoniel Maya" href="/feed.xml">
   <script src="https://kit.fontawesome.com/1109340325.js" crossorigin="anonymous"></script>
   
@@ -144,73 +146,53 @@
 
     <div class="content-wrapper">
       <div class="content-wrapper__inner">
-        <h2>Categories:</h2>
-<div class="categories"> 
- 
-  <a href="#blog">blog</a>
-
-</div>
-
-<!-- iterate through all categories on the site --> 
- 
-  <!-- for each tag, create an anchor by using the tag name as an id --> 
-  <div id="blog">  
-    <h3> blog </h3>  <!-- for create a heading --> 
-
-    <ul> <!-- create the list of posts -->
-      <!-- iterate through all the posts on the site --> 
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2024/santi/">El problema de los tres cuerpos</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2017/Instalar-Miniconda-en-Debian-Stretch/">Instalar Miniconda3 en Debian Stretch</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2017/Cambiar-la-ubicacio-n-del-Docker-Root-Dir/">Cambiar la ubicación del Docker Root Dir</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/Entornos-virtuales-python/">Entornos virtuales en Python</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/codificacio-n-no-va-lida/">Codificación no valida</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/for-do-done/">for-do-done</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/Hello-world/">Hello world!</a>
-            </li>
-        
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-15 12:54" class="post-meta__date date">15 Aug 2016</time>
       
-    </ul>
-  </div>
+      &#8226; <span class="post-meta__tags">on <a href="/tags/#bash">bash</a>, <a href="/tags/#debian">debian</a></span>
+      
+    </div>
+    <h1 class="post-title">Codificación no valida</h1>
+  </header>
+
+  <section class="post">
+    <p>Un detalle bastante molesto y bastante común para mí es el error “Codificación no válida” generalmente al descomprimir archivos rar/zip, principalmente cuando el nombre contiene acentos, eñes y diéresis. Esto se debe a la que la codificación de descompresión es diferente a la codificación de origen. Por ejemplo: <code class="language-plaintext highlighter-rouge">BÃ¤nd - Some T�tle.file</code></p>
+
+<p>Los archivos que tengo fueron comprimidos(?) en Güindos, utilizando la codificación latina ISO-8859-1 o la codificación ISO-8859-5, utilizada para alfabetos cirílicos que es de donde obtengo… bueno, no tengo por qué dar explicaciones.</p>
+
+<p>Primeramente se instala <code class="language-plaintext highlighter-rouge">convmv</code> para convertir el archivo a la codificación correspondiente:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>convmv
+</code></pre></div></div>
+
+<p>Luego, buscamos los archivos que contengan alǵún caracter desconocido <code class="language-plaintext highlighter-rouge">?</code>, usando <code class="language-plaintext highlighter-rouge">xargs</code> ejecutamos <code class="language-plaintext highlighter-rouge">convmv</code> a la búsqueda.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s1">'?'</span> | xargs convmv <span class="nt">-r</span> <span class="nt">--notest</span> <span class="nt">-f</span> ISO-8859-1 <span class="nt">-t</span> UTF-8
+</code></pre></div></div>
+
+  </section>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+</article>
+
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://zorbax.github.io/2016/codificacio-n-no-va-lida/';
+        this.page.identifier = '/2016/codificación-no-válida';
+      };
+
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//zorbax-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+       })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 
       </div>
 
